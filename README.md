@@ -14,4 +14,26 @@ git log -1 --pretty=format:"%H"
 git log 
 Для вывода более компактной информации: 
 git log --oneline
- 
+
+## Статус файлов 
+
+В Git файлы могут находиться в нескольких состояниях:
+- **Untracked**: файл не отслеживается Git.
+- **Modified**: файл изменен, но изменения не были добавлены в индекс.
+- **Staged**: файл добавлен в индекс и готов к коммиту.
+
+Пример жизненного цикла файла: 
+- `modified` + `git add` = `staged`
+- `staged` + `git commit` = `committed`
+
+Для просмотра статуса файлов используется команда:
+```sh
+git status
+  
+Схема в формате Mermaid:
+graph LR
+    A[Untracked] -->|git add| B[Staged]
+    B -->|git commit| C[Committed]
+    C -->|git modify| D[Modified]
+    D -->|git add| B
+
